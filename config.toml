@@ -1,0 +1,19 @@
+[colors]
+background = "#191724"
+secondaryBackground = "#1f1d2e"
+foreground = "#e0def4"
+secondaryForeground = "#e0def4"
+
+[interactor]
+margin = "24"
+
+    [interactor.font]
+    family = "Inconsolata"
+    size = "16"
+
+[header]
+margin = "4"
+
+    [header.font]
+    family = "Inconsolata"
+    size = "12"

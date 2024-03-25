@@ -1,0 +1,1 @@
+Salculajor is simple cross-platform calculator written in Java.
