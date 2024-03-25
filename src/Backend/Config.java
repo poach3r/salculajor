@@ -22,7 +22,7 @@ public class Config {
         colors[2] = Color.WHITE;
         colors[3] = Color.GRAY;
 
-        configLocation = Optional.ofNullable(System.getenv("SEJIT_CONFIG"));
+        configLocation = Optional.ofNullable(System.getenv("SALCULAJOR_CONFIG"));
 
         if(configLocation.isPresent()) {
             File file = new File(configLocation.get());
@@ -33,8 +33,8 @@ public class Config {
         }
 
         else {
-            configFile = new File("/home/" + System.getProperty("user.name") + "/.config/sejit/config.toml");
-            System.out.println("SEJIT_CONFIG is null, attempting to use " + configFile);
+            configFile = new File("/home/" + System.getProperty("user.name") + "/.config/salculajor/config.toml");
+            System.out.println("SALCULAJOR_CONFIG is null, attempting to use " + configFile);
             if(configFile.exists()) {
                 configToml = new Toml().read(configFile);
                 read();
@@ -51,13 +51,13 @@ public class Config {
         colors[2] = Color.decode(configToml.getString("colors.foreground"));
         colors[3] = Color.decode(configToml.getString("colors.secondaryForeground"));
 
-        int n = Integer.parseInt(configToml.getString("editor.margin"));
+        int n = Integer.parseInt(configToml.getString("interactor.margin"));
         Main.interactorGui.setMargin(BorderFactory.createEmptyBorder(n, n, n, n));
         Main.interactorGui.setMarginInt(n);
         n = Integer.parseInt(configToml.getString("header.margin"));
         Main.header.setMargin(BorderFactory.createEmptyBorder(n, n, n, n));
 
-        Main.interactorGui.setFont((new Font(configToml.getString("editor.font.family"), Font.PLAIN, Integer.parseInt(configToml.getString("editor.font.size")))));
+        Main.interactorGui.setFont((new Font(configToml.getString("interactor.font.family"), Font.PLAIN, Integer.parseInt(configToml.getString("interactor.font.size")))));
         Main.header.setFont(new Font(configToml.getString("header.font.family"), Font.PLAIN, Integer.parseInt(configToml.getString("header.font.size"))));
     }
 }
